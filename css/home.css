@@ -1,0 +1,86 @@
+/***************************************************
+			PRELOADER
+***************************************************/
+@charset "utf-8";
+body {
+	overflow: hidden;
+}
+
+/* Preloader */
+#preloader {
+	position: fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color:#fff; /* change if the mask should have another color than white */
+	z-index:99; /* makes sure it stays on top */
+}
+
+#status {
+	width:200px;
+	height:200px;
+	position:absolute;
+	left:50%; /* centers the loading animation horizontally one the screen */
+	top:50%; /* centers the loading animation vertically one the screen */
+	background-image:url(../images/status.gif); /* path to your loading animation */
+	background-repeat:no-repeat;
+	background-position:center;
+	margin:-100px 0 0 -100px; /* is width and height divided by two */
+}
+
+
+
+
+
+/*div.row > div{
+	border: 1px solid black;
+}*/
+/*div.row > div.eachBook{
+	display: none;
+}*/
+.metro .tile{
+	border-left: 2px solid rgb(27, 161, 226);
+}
+.metro .tile:hover {
+  outline: rgb(27, 161, 226) solid 1px;
+}
+.metro .tile.selected {
+  border: 2px #4390df solid;
+}
+.metro .tile:active {
+  outline: 0;
+}
+.metro .navigation-bar{
+  width: 100%;
+  display: block;
+  background-color: #1ba1e2;
+  color: #ffffff;
+}
+.metro .navigation-bar .element:hover{
+	-webkit-transition: all 0.1s ease-in;
+	-moz-transition: all 0.1s ease-in;
+	-ms-transition: all 0.1s ease-in;
+	-o-transition: all 0.1s ease-in;
+	transition: all 0.1s ease-in;
+	background-color: black !important;
+}
+.metro .navigation-bar .element:active{
+	background: rgba(1,1,1,0.8) !important;
+}
+.metro .bg-cyan:hover {
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	-ms-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+  	background-color: black !important;
+}
+.metro .bg-dark {
+  background-color: black !important;
+}
+.details{
+	position: absolute; 
+	width: 32.5%;
+}
+
