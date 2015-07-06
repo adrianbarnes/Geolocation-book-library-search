@@ -14,7 +14,7 @@ $(document).ready(function(){
 		$.ajax({
 			type: "POST",
 			//url: "http://teknolojiagh.com/glib/search.php",
-			url:"192.168.1.2/goodluck/apis/engine/v1/index.php",
+			url:"192.168.43.201/goodluck/apis/engine/v1/index.php",
 			data:  {"keyword":search,"is_exact_match":is_matched_checked, "category":selectedvalues},
 			success: function(res) {
 				//$("#result").html(res);
@@ -25,7 +25,7 @@ $(document).ready(function(){
 					processData(res);
 				} // if succesful 
 				else{
-					$("#result").html("No result Found");
+					$("#result").html("<br /><br /><h6>No results found</h6><br /><br />");
 
 					$('#status').fadeOut(); // will first fade out the loading animation
 					$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
@@ -54,6 +54,7 @@ $(document).ready(function(){
 		
 
 		$( "ul#result" ).empty();
+		$('#bookshelf button').hide();
 		$('#other-universities').empty();
 	    _search();
 	});
@@ -81,6 +82,8 @@ $(document).ready(function(){
 		$('#status').fadeOut(); // will first fade out the loading animation
 		$('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
 		$('body').delay(350).css("display","");
+
+		$('ul#result').empty().append('<h5>displaying results from <b>gtuc</b>:</h5>');
     	$.each(data.msg, function(i, item){
 
 	    	/*var listings = "<div class='row' style='margin-top:0px'>";
@@ -140,35 +143,57 @@ $(document).ready(function(){
 
 			
     	});// end each
-		$('#bookshelf').append('<div id="other-universities"><button id="show-gtuc" class="button-blue">Results for GTUC</button><button id="show-legon" class="button-blue">Results for LEGON</button><button id="show-ucc" class="button-blue">Results for UCC</button><button id="show-knust" class="button-blue">Results for KNUST</button><br /></div> ');
+
+		$('#bookshelf').append('<button id="show-gtuc" class="button-blue" style="display:none">Results from GTUC</button>');
+		if(gtuc.length==0){
+			$('#result').append('<br /><br /><h6>No results found</h6><br /><br />');
+		}
+		if(legon.length>0){
+			$('#bookshelf').append('<button id="show-legon" class="button-blue">Results from LEGON</button>');
+		}
+		if(ucc.length>0){
+			$('#bookshelf').append('<button id="show-ucc" class="button-blue">Results from UCC</button>');	
+		}
+		if(knust.length>0){
+			$('#bookshelf').append('<button id="show-knust" class="button-blue">Results from KNUST</button>');
+		}
+
 		refreshEvent();
 
 		$('#show-gtuc').click(function(){
-			$('ul#result').empty();
+			$('ul#result').empty().append('<h5>displaying results from <b>gtuc</b>:</h5>');
+			$('#show-legon, #show-ucc, #show-knust').css("display","");
 			$.each(gtuc, function(i, item){
 				$('#result').append(gtuc[i]);
 			})// end each
+			$('#show-gtuc').css("display","none");
 			refreshEvent();
 		});// end show legon
 		$('#show-legon').click(function(){
-			$('ul#result').empty();
+			$('ul#result').empty().append('<h5>displaying results from <b>ug</b>:</h5>');
+			$('#show-gtuc, #show-ucc, #show-knust').css("display","");
 			$.each(legon, function(i, item){
 				$('#result').append(legon[i]);
 			})// end each
+			$('#show-legon').css("display","none");
 			refreshEvent();
 		});// end show legon
 		$('#show-ucc').click(function(){
-			$('ul#result').empty();
+			$('ul#result').empty().append('<h5>displaying results from <b>ucc</b>:</h5>');
+			$('#show-gtuc, #show-legon, #show-knust').css("display","");
 			$.each(ucc, function(i, item){
 				$('#result').append(ucc[i]);
 			})// end each
+			$('#show-ucc').css("display","none");
 			refreshEvent();
 		});// end show ucc
 		$('#show-knust').click(function(){
-			$('ul#result').empty();
+			$('ul#result').empty().append('<h5>displaying results from <b>knust</b>:</h5>');
+			$('#show-gtuc, #show-legon, #show-ucc').css("display","");
 			$.each(knust, function(i, item){
 				$('#result').append(knust[i]);
 			})// end each
+			$('#show-knust').css("display","none");
 			refreshEvent();
 		});// end show legon
 
