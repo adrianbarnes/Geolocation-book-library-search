@@ -14,7 +14,7 @@ $(document).ready(function(){
 		$.ajax({
 			type: "POST",
 			//url: "http://teknolojiagh.com/glib/search.php",
-			url:"http://localhost/goodluck/apis/engine/v1/index.php",
+			url:"192.168.1.2/goodluck/apis/engine/v1/index.php",
 			data:  {"keyword":search,"is_exact_match":is_matched_checked, "category":selectedvalues},
 			success: function(res) {
 				//$("#result").html(res);
